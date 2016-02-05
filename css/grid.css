@@ -95,8 +95,9 @@ html, body {
 
 .bag {
     background-color:gainsboro;
-    position:relative;
-    width:80vw;
-    
+    width:850px;
+    padding-bottom: 10px;
+    padding-left:5px;
+    float:right;
 }
 
