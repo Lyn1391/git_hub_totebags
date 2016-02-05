@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+  <!-- this is the header linked with header.xhtml --> 
+
+<headReplace metal:use-macro="./header.xhtml/meta_head">
+  </headReplace>
+    
+  <body>
+      
+      
+  <navReplace metal:use-macro="./nav.xhtml/nav_selected">
+    </navReplace>    
+      
+   <!--logo-->      
+   
+          
+  <bodyReplace metal:use-macro="./homepageBody.xhtml/meta_body">
+    </bodyReplace>   
+   <!-- here goes the footer -->   
+    <footerReplace metal:use-macro="./footer.xhtml/page_footer">
+    </footerReplace>
+
+  
+      
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../interact.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
