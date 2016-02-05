@@ -1,8 +1,49 @@
- <div class = "wrapper" metal:define-macro="meta_body">  
+ <div class="wrapper" metal:define-macro="meta_body">  
       
-   
+      <div class="container col-md-11">
+           
+          <nav class="navbar-inverse"  role="navigation"> 
+          <div class="navbar-header" style="clear:both;">
+           
+            <img src="hand.png" alt="decor" height="30" width="auto" style="margin:10px auto;display:block;"/>
+              
+          </div>
+               
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown active">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Leather</a></li>
+                  <li><a href="#">Plastic</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li class="dropdown-header">Nav header</li>
+                  <li><a href="#">Separated link</a></li>
+                 
+                </ul>
+              </li>
+              <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>     
+            </ul> 
+              
+              <ul class="nav navbar-nav" style="float:right;margin-top:-1%;">
+                <li>
+                        
+                         <a href="">
+                        <button  type="button" class="btn btn-default btn-lg">
+                         <span id="userlink" class=" glyphicon glyphicon-user" aria-hidden="true"></span>
+                        </button>
+                       </a>
+              </li>     
+            </ul>  
+          </div>
+          </nav>          
+</div>
     
-      <div  class="bag">
+     
+     
+    
 
       <!--content box-->
 
@@ -15,21 +56,22 @@
          <div class="col-xs-10" style="display:block; margin-left: auto;
     margin-right: auto;">
            
-             <div id="content">
+             <div id="content" class="bag">
 
       <div id="shoppingCartContainer">
 
         <table id="productTable">
 
         
-          <tbody id="productslist">
+          <tbody id="productslist" style="">
             <!-- THIS SECTION WILL BE REPLACED BY SERVER GENERATED ROWS -->
 
 
             <!-- THIS SECTION WILL BE REPLACED BY SERVER GENERATED ROWS -->
           </tbody>
         </table>
-
+        
+          <div style="height:100px;width:100px;"></div>
 
         <input type="button" value="Start Cart" id="startCart"/>
         <input type="button" value="Cancel Cart" id="cancelCart"/>
@@ -40,7 +82,7 @@
             <input type="button" data-remove-button="remove" value="X"/></li>-->
         </ul>
         <input type="button" value="Check Out" id="checkoutcart"/>
-        <span style="display: inline; font-size: 8pt;"><i>You'll see taxes and other shipping costs (ha ha) during checkout.</i></span>
+        <span style="display: inline; font-size: 8pt;"><i>You'll see taxes and other shipping costs during checkout.</i></span>
 
       </div>
     </div>
@@ -48,12 +90,12 @@
           
             
      </div>
-   
+         
           <div class="col-md-1"></div>
           
           <div class="push"></div>
          
-      </div>
+    
      
      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>
@@ -86,8 +128,8 @@
                 // get the sku
                 var sku = this.getAttribute("data-sku-add");
                 var qty = $("input[data-sku-qty='" + sku + "']").val();
-                var price = $("td[data-sku-price='" + sku + "']").text();
-                var desc = $("td[data-sku-desc='" + sku + "']").text();
+                var price = $("span[data-sku-price='" + sku + "']").text();
+                var desc = $("li[data-sku-desc='" + sku + "']").text();
                 var subtotal = parseFloat(Math.round((qty * price) * 100) / 100).toFixed(2);
                 console.log(desc, "quantity", qty, "price", price);
 
@@ -165,7 +207,7 @@
 
                 console.log("Check out cart with the following items", itemArray);
                 $.ajax({
-                    url: "./homepageBody.xhtml",
+                    url: "./shoppingcart.php",
                     type: "POST",
                     dataType: 'json',
                     data: {action: "checkoutcart", items: itemsAsJSON},
@@ -188,6 +230,6 @@
         /*]]>*/
     </script>
      
-     
-</div>
+  
 
+</div>
