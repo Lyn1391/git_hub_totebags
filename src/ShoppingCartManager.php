@@ -1,10 +1,10 @@
 <?php
 
-//require_once('./DBConnector.php');
+//include('./DBConnector.php');
 
 //$um = new ShoppingCartManager();
 
-// Facade
+//Facade
 class ShoppingCartManager {
 
     private $db;
@@ -28,7 +28,7 @@ class ShoppingCartManager {
 
     public function checkoutCart($id) {
         $sql = "UPDATE cart SET state = 'checked out' WHERE ID = $id";
-        $count = $this->db->affectRows($sql);
+        $count = $this->db->affectRows($sql); 
         return $count;
     }
 

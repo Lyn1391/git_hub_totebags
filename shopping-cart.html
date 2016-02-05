@@ -1,40 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Shopping Cart (with Sessions - no Login)</title>
-    <meta charset="utf-8"/>
-    <style>
-      @import url(https://fonts.googleapis.com/css?family=Hind);
+ <div class = "wrapper" metal:define-macro="meta_body">  
 
-      body {
-        font-family: 'Hind', sans-serif;
-      }
-
-      #shoppingCartContainer {
-        background-color: #aabbff;
-        float: right;
-      }
-
-      #shoppingCart {
-        list-style-type: none;
-      }
-
-      #shoppingCart li {
-        width: 100%;
-      }
-
-      #productTable{
-        border: 1px solid black;
-        float: left;
-        width: 100%;
-      }
-
-      #productTable input {
-        width: 60px;
-      }
-    </style>
-  </head>
-  <body>
+ 
 
     <div id="content">
 
@@ -42,14 +8,7 @@
 
         <table id="productTable">
 
-          <thead>
-            <tr>
-              <th>Product</th>
-              <th>Quantity</th>
-              <th>Price</th>
-              <th>Add</th>
-            </tr>
-          </thead>
+        
           <tbody id="productslist">
             <!-- THIS SECTION WILL BE REPLACED BY SERVER GENERATED ROWS -->
 
@@ -205,6 +164,4 @@
         });
         /*]]>*/
     </script>
-
-  </body>
-</html>
+</div>
