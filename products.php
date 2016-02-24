@@ -18,21 +18,20 @@ loadScripts();
             
             // <img src="data:image/jpeg;base64,' . base64_encode($row2['image']) . '" width="290" height="290">'
             $html .= "
-            
-                        <ul style='float:left; margin:10px 0;list-style-type:none;'>
-                            <li data-sku-img='$sku'><img src='data:image/jpeg;base64,$img',width='250px' height='250px' /></li>
-                        </ul>
-            
-                        <ul style='float:left; margin:10px 0;list-style-type:none;'>
-                            
-                            <span>$<span data-sku-price='$sku'>$price</span></span>
-                            <li><input data-sku-qty='$sku' type='number' value='1' min='1' max='10' step='1' />
-                            <input data-sku-add='$sku' type='button' value='Add'/></li>
-                       
-                        </ul>
-                        
+            <div id='menu-outer'>
+                <div id='horizontal-list'>
+                  <ul>
+                  <li class='alignlist'>
                     
-                      
+                            <input data-sku-qty='$sku' class='image' type='number' value='1' min='1' max='10' size='5'/>
+                            <span data-sku-price='$sku' class='price'>$price</span></br>
+                            <img class='imagestyle' data-sku-img='$sku' src='data:image/jpeg;base64,$img'/></br>
+                            <input  class='addcart btn btn-info btn-lg' data-sku-add='$sku' type='button' value='Add to cart'/>
+                       
+                    </li>
+                   </ul>
+                </div>
+            </div>
                       ";
         }
         echo $html;

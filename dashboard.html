@@ -1,0 +1,293 @@
+
+   
+  
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Hind);
+
+      body {
+        font-family: 'Hind', sans-serif !important;
+      }
+      
+        .content {
+            margin: 0 auto !important;
+        }    
+        
+      table {
+        clear:both;
+        background-color: #F8F5C7 !important;
+        border-color: rgba(0,0,0,0);
+        width:60vw !important;
+        margin: 0 auto !important;
+        margin-left:9% !important;
+      }
+        
+      td {
+        border-bottom: solid 6px #fff!important;
+        padding: 10px !important;
+      }
+        
+      tr {
+        text-align:center; !important;
+       
+      }
+        
+      th {
+        clear:both;
+        text-align:center !important;
+        padding-top: 10px !important;
+      }
+    
+      thead {
+         background-color:rgba(81,68,57,0.6);!important;
+         border-bottom: solid 10px #fff!important;
+         color:#fff;
+      }
+        
+    </style>
+ 
+      <link href="css/grid.css" rel="stylesheet"/>
+     <link href="css/bootstrap.css" rel="stylesheet"/>
+     
+       <div class="col-md-12 line" >
+        <img src="line.png" alt="decor" height="100" width="auto" style="margin:0 auto;margin-bottom:-5%; display:block;"/>
+        </div>
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+           <img src="shop.png" alt="logo" height="100" width="100" style="margin:0 auto; display:block;"/>
+    </div>
+    <div class="col-md-4"></div>
+     
+   
+    <div class="col-md-12 line">
+        <img src="line.png" alt="decor" height="100" width="auto" style="margin:0 auto;margin-top:-5%; display:block;"/>
+      </div>
+
+
+    <div class="container col-md-11">
+           
+          <nav class="navbar-inverse"  role="navigation"> 
+          <div class="navbar-header" style="clear:both;">
+           
+            <img src="hand.png" alt="decor" height="30" width="auto" style="margin:10px auto;display:block;"/>
+              
+          </div>
+               
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown active">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Leather</a></li>
+                  <li><a href="#">Plastic</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li class="dropdown-header">Nav header</li>
+                  <li><a href="#">Separated link</a></li>
+                 
+                </ul>
+              </li>
+              <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>     
+            </ul> 
+              
+              <ul class="nav navbar-nav" style="float:right;margin-top:-1%;">
+                <li>
+                        
+                         <a href="">
+                        <button  type="button" class="btn btn-default btn-lg">
+                         <span id="userlink" class=" glyphicon glyphicon-user" aria-hidden="true"></span>
+                        </button>
+                       </a>
+              </li>     
+            </ul>  
+          </div>
+          </nav>          
+</div>
+
+
+
+
+    <div id="content" >
+        
+     
+      <table id="users" class="col-xs-9">
+        <thead>
+          <tr>
+            <th class="first_name_header"><span>PRODUCT</span></th>
+            <th class="last_name_header"><span>PRICE</span></th>
+            <th class="login_header"><span>DESCRIPTION</span></th>
+            <th class="image"><span>IMAGE</span></th>
+            <th class="delete_header"><span>DELETE</span></th>
+            <th class="delete_header"><span>UPDATE</span></th>
+          </tr>
+        </thead>
+
+        <tbody id='userrows'>
+          <!-- THIS SECTION WILL BE REPLACED BY SERVER GENERATED ROWS -->
+          <tr>
+            <td class="first_name"><span>aaa</span></td>
+            <td class="last_name"><span>bbb</span></td>
+            <td class="user_name"><span>uniqueloginname</span></td>
+            <td class="i_image"><span><image src=''/></span></td>
+            <td><input id="uniqueloginname" class="delete" type="button" value="Delete"/></td>
+          </tr>
+          <!-- THIS SECTION WILL BE REPLACED BY SERVER GENERATED ROWS -->
+        </tbody>
+      </table><br/>
+      <form id="addNewUser" class="col-xs-3">
+        <input id="addFirstName" type="text" placeholder="Product Name" required="required"/></br>
+        <input id="addLastName" type="text" placeholder="Price" required="required"/></br>
+        <input id="addUserName" type="text" placeholder="Description" required="required"/></br>
+        <input id="image" type="text" placeholder="Image Path" required="required"></br>
+        <input id="submitNewUser" type="submit" value="Add"/>
+      </form>
+    </div>
+    <div class="beforecenter">
+        
+    </div>
+    <div class="footer" >
+        <div class="container1">
+            <p class="pull-right"><a href="#">Back to top</a></p>
+            <p class="text-muted">2015 Company, Inc.  <a href="#">Privacy</a> <a href="#">Terms</a></p>
+        </div>
+     </div> 
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+
+        $(document).ready(function() {
+
+            function loadUsers() {
+                $.ajax({
+                    url: "./users.php",
+                    type: "GET",
+                    dataType: 'html',
+                    success: function(returnedData) {
+                        //console.log("cart checkout response: ", returnedData);
+                        $("#userrows").html(returnedData);
+                        //window.location.href = "user-editor.html";
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.log(jqXHR.statusText, textStatus);
+                    }
+                });
+            }
+
+            loadUsers();
+
+
+            $("#addNewUser").submit(function(e) {
+                e.preventDefault();
+
+                // get values from form
+                var firstName = $("#addFirstName").val();
+                var lastName = $("#addLastName").val();
+                var userName = $("#addUserName").val();
+                var image = $("#image").val();
+                console.log(firstName, lastName, userName, image);
+
+                $.ajax({
+                    url: "users.php",
+                    type: "POST",
+                    dataType: "JSON",
+                    data: {action: "add", newFirstName: firstName,
+                        newLastName: lastName, newUserName: userName,newImage:image},
+                    success: function(returnedData) {
+                        loadUsers();
+                        console.log(returnedData);
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        $("#p1").text(jqXHR.statusText);
+                    }
+
+                });
+
+            });
+
+            $('#users').on('click', '.delete', function() {
+                var loginValue = this.getAttribute("id");
+                loginValue = loginValue.replace("d-", "");
+
+                $.ajax({
+                    url: "./users.php",
+                    type: "POST",
+                    dataType: 'json',
+                    data: {action: "delete", username: loginValue},
+                    success: function(returnedData) {
+                        loadUsers();
+
+                        //window.location.href = "user-editor.html";
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.log(jqXHR.statusText, textStatus);
+                    }
+                });
+
+            });
+
+            $('#users').on('click', '.update', function() {
+                var loginValue = this.getAttribute("id");
+                //var firstName = $(this).val(
+                loginValue = loginValue.replace("u-", "");
+                var editedFirstName = $(this).parent().parent().find(".first_name span").text();
+                //console.log(loginValue, editedFirstName);
+
+                $.ajax({
+                    url: "./users.php",
+                    type: "POST",
+                    dataType: 'json',
+                    data: {action: "update", username: loginValue, newFirstName: editedFirstName},
+                    success: function(returnedData) {
+                        loadUsers();
+
+                        //window.location.href = "user-editor.html";
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.log(jqXHR.statusText, textStatus);
+                    }
+                });
+
+            });
+
+
+            // http://stackoverflow.com/questions/11882693/change-table-cell-from-span-to-input-on-click
+            $('#users').on('click', 'span', function() {
+
+                var $td = $(this).parent();
+                var $input = null;
+
+                var val = $(this).html();
+
+                if($td.attr('class') === 'first_name') {
+                    //var val = $(this).html();
+                    $td.html('<input type="text" value="' + val + '"/>');
+                    var $input = $td.find('input');
+                    $input.focus();
+                    $input.select();
+                }
+
+                if($input != null) {
+
+                    $input.on('blur', function() {
+                        $(this).parent().html('<span>' + $(this).val() + '</span>');
+                    });
+
+                    $input.keyup(function(e) {
+                        if(e.which == 13) {
+                            $(this).parent().html('<span>' + $(this).val() + '</span>');
+                        } else if(e.which == 27) {
+                            // escape key, means user canceled operation
+                            $(this).parent().html('<span>' + val + '</span>');
+                        }
+                    });
+                }
+            });
+
+
+
+        });
+
+    </script>
+
+
