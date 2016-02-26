@@ -8,6 +8,11 @@ $scripts = array('DBconnector.php',
                  'Parameters.php',
                  'ProductManager.php',
                  'ShoppingCartManager.php',
+                 'LoginManager.php',
+                 'ShowUserProfileAction.php',
+                 'UserLoginAction.php',
+                 'UserLogoutAction.php',
+                 'Session.php',
                  'Utils.php');
 
     $subDir = "src";

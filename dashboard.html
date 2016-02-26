@@ -1,4 +1,10 @@
+<!Doctype html>
+<html>
 
+    <body>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
    
   
     <style>
@@ -8,27 +14,21 @@
         font-family: 'Hind', sans-serif !important;
       }
       
-        .content {
-            margin: 0 auto !important;
-        }    
+       
         
       table {
-        clear:both;
-        background-color: #F8F5C7 !important;
-        border-color: rgba(0,0,0,0);
-        width:60vw !important;
-        margin: 0 auto !important;
-        margin-left:9% !important;
+       
       }
         
       td {
-        border-bottom: solid 6px #fff!important;
+        
         padding: 10px !important;
+        border: solid 2px #DAE3E6;
       }
         
       tr {
         text-align:center; !important;
-       
+        border: solid 3px #DAE3E6;
       }
         
       th {
@@ -38,126 +38,167 @@
       }
     
       thead {
-         background-color:rgba(81,68,57,0.6);!important;
-         border-bottom: solid 10px #fff!important;
+         background-color:rgba(81,68,57,0.6)!important;
+         border-bottom: solid 2px #fff!important;
          color:#fff;
+      }
+        
+      .loginpage {
+         background-color:rgba(5,5,0,0.5);
+         text-align: center;
+         color: $almost-white;
+         font-family: 'Raleway', sans-serif;
+         text-shadow: 2px 2px 0 $dark-green;       
       }
         
     </style>
  
-      <link href="css/grid.css" rel="stylesheet"/>
+     <link href="css/grid.css" rel="stylesheet"/>
      <link href="css/bootstrap.css" rel="stylesheet"/>
-     
-       <div class="col-md-12 line" >
-        <img src="line.png" alt="decor" height="100" width="auto" style="margin:0 auto;margin-bottom:-5%; display:block;"/>
-        </div>
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-           <img src="shop.png" alt="logo" height="100" width="100" style="margin:0 auto; display:block;"/>
-    </div>
-    <div class="col-md-4"></div>
-     
-   
-    <div class="col-md-12 line">
-        <img src="line.png" alt="decor" height="100" width="auto" style="margin:0 auto;margin-top:-5%; display:block;"/>
-      </div>
+ 
+        
+ <!-------------------this is the sign up/ login page, appear before user login the admin page----------------------------->  
+        
+        
+        
+        
+        
+ <!--------------------this is the breaking point for the admin page---------------------------->        
+<div class="adminPage">
+     <div class="wrapper">
 
 
-    <div class="container col-md-11">
+    <div class=" col-md-11">
            
-          <nav class="navbar-inverse"  role="navigation"> 
-          <div class="navbar-header" style="clear:both;">
-           
-            <img src="hand.png" alt="decor" height="30" width="auto" style="margin:10px auto;display:block;"/>
-              
-          </div>
-               
-          <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li class="dropdown active">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Leather</a></li>
-                  <li><a href="#">Plastic</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li class="dropdown-header">Nav header</li>
-                  <li><a href="#">Separated link</a></li>
-                 
+                 <nav class="navbar navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.php" ><img src="shop.png" width="65px" height="50px" /></a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Services</a>
+                    </li>
+                    
                 </ul>
-              </li>
-              <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>     
-            </ul> 
-              
-              <ul class="nav navbar-nav" style="float:right;margin-top:-1%;">
-                <li>
-                        
-                         <a href="">
-                        <button  type="button" class="btn btn-default btn-lg">
-                         <span id="userlink" class=" glyphicon glyphicon-user" aria-hidden="true"></span>
-                        </button>
-                       </a>
-              </li>     
-            </ul>  
-          </div>
-          </nav>          
-</div>
-
-
-
-
-    <div id="content" >
-        
-     
-      <table id="users" class="col-xs-9">
-        <thead>
-          <tr>
-            <th class="first_name_header"><span>PRODUCT</span></th>
-            <th class="last_name_header"><span>PRICE</span></th>
-            <th class="login_header"><span>DESCRIPTION</span></th>
-            <th class="image"><span>IMAGE</span></th>
-            <th class="delete_header"><span>DELETE</span></th>
-            <th class="delete_header"><span>UPDATE</span></th>
-          </tr>
-        </thead>
-
-        <tbody id='userrows'>
-          <!-- THIS SECTION WILL BE REPLACED BY SERVER GENERATED ROWS -->
-          <tr>
-            <td class="first_name"><span>aaa</span></td>
-            <td class="last_name"><span>bbb</span></td>
-            <td class="user_name"><span>uniqueloginname</span></td>
-            <td class="i_image"><span><image src=''/></span></td>
-            <td><input id="uniqueloginname" class="delete" type="button" value="Delete"/></td>
-          </tr>
-          <!-- THIS SECTION WILL BE REPLACED BY SERVER GENERATED ROWS -->
-        </tbody>
-      </table><br/>
-      <form id="addNewUser" class="col-xs-3">
-        <input id="addFirstName" type="text" placeholder="Product Name" required="required"/></br>
-        <input id="addLastName" type="text" placeholder="Price" required="required"/></br>
-        <input id="addUserName" type="text" placeholder="Description" required="required"/></br>
-        <input id="image" type="text" placeholder="Image Path" required="required"></br>
-        <input id="submitNewUser" type="submit" value="Add"/>
-      </form>
+                <ul class="nav navbar-nav navbar-right" >
+                    <li>
+                        <a href="#" id="logoutbutton">Log out</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+   
+               
     </div>
-    <div class="beforecenter">
+
+
+       
         
-    </div>
+
+
+         <div id="content" >
+            <div id="leftcontainer">
+                <form id="addNewUser" >
+                    <input id="addFirstName" type="text" placeholder="Product Name" required="required"/></br>
+                    <input id="addLastName" type="text" placeholder="Price" required="required"/></br>
+                    <input id="addUserName" type="text" placeholder="Description" required="required"/></br>
+                    <input id="image" type="text" placeholder="Image Path" required="required"></br>
+                    <input id="submitNewUser" type="submit" value="Add"/>
+          </form>  
+        </div>
+    
+        <div id="rightcontainer">  
+            <table id="users">
+                <thead>
+                  <tr>
+                    <th class="first_name_header"><span>PRODUCT</span></th>
+                    <th class="last_name_header"><span>PRICE</span></th>
+                    <th class="login_header"><span>DESCRIPTION</span></th>
+                    <th class="image"><span>IMAGE</span></th>
+                    <th class="delete_header"><span>DELETE</span></th>
+                    <th class="delete_header"><span>UPDATE</span></th>
+                  </tr>
+                </thead>
+
+                <tbody id='userrows'>
+                  <!-- THIS SECTION WILL BE REPLACED BY SERVER GENERATED ROWS -->
+                  <tr>
+                    <td class="first_name"><span>aaa</span></td>
+                    <td class="last_name"><span>bbb</span></td>
+                    <td class="user_name"><span>uniqueloginname</span></td>
+                    <td class="i_image"><span><image src=''/></span></td>
+                    <td><input id="uniqueloginname" class="delete" type="button" value="Delete"/></td>
+                  </tr>
+                  <!-- THIS SECTION WILL BE REPLACED BY SERVER GENERATED ROWS -->
+                </tbody>
+              </table><br/>
+            </div>
+        </div>
+            
+            <div class="beforecenter">
+
+            </div>
+
+     </div>
+
     <div class="footer" >
         <div class="container1">
             <p class="pull-right"><a href="#">Back to top</a></p>
-            <p class="text-muted">2015 Company, Inc.  <a href="#">Privacy</a> <a href="#">Terms</a></p>
+            <p class="text-muted">2015 Company, Inc.  <a href="#"> Privacy </a> <a href="#">Terms</a></p>
         </div>
      </div> 
-
+</div>
+</body>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>
 
         $(document).ready(function() {
 
+             $("#logoutbutton").bind("click", doLogout);
+             
+            function doLogout() {
+                var formData = {logout: "true"};
+                //console.log("Logout data to send: ", formData);
+
+                $.ajax({
+                    url: "./logout.php",
+                    type: "POST",
+                    dataType: "JSON",
+                    data: formData,
+                    success: function(returnedData) {
+                        //console.log("Logout data returned: ", returnedData);
+                        window.location.href = "signin.php";
+
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        //console.log(jqXHR.statusText, textStatus, errorThrown);
+                        console.log(jqXHR.statusText, textStatus);
+                    }
+                });
+            }
+
+
+            // logout event
+            $("#logoutbutton").click(doLogout);
+
+            
             function loadUsers() {
                 $.ajax({
                     url: "./users.php",
@@ -290,4 +331,4 @@
 
     </script>
 
-
+</html>

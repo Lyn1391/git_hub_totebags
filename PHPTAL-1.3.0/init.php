@@ -7,7 +7,9 @@ $scripts = array('DBconnector.php',
                  'Messages.php',
                  'Parameters.php',
                  'UserManager.php',
-                 'Utils.php');
+                 'Utils.php',
+                 'RealUserManager.php'
+                );
 
     $subDir = "src";
 
