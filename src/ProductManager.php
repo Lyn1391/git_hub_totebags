@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 //require_once('./DBConnector.php');
 
@@ -14,14 +14,14 @@ class ProductManager {
     }
 
     public function listProducts() {
-        $sql = "SELECT SKU, item_price, description, image FROM product";
+        $sql = "SELECT user_name, first_name, last_name, image FROM user";
         $rows = $this->db->query($sql);
         return $rows;
     }
 
     public function findProduct($SKU) {
         $params = array(":sku" => $SKU);
-        $sql = "SELECT SKU, item_price, description, image FROM product WHERE SKU = :sku";
+        $sql = "SELECT user_name, first_name, last_name, image FROM user ";
 
         $rows = $this->db->query($sql, $params);
         if(count($rows) > 0) {
