@@ -12,7 +12,7 @@
 
      
   
-     <div class="col-xs-1"></div>
+     <div class="holder"></div>
       
         
      <div id="myCarousel" class="carousel slide" data-ride="carousel" >
@@ -61,7 +61,7 @@
      
      
        
-      <div  style=" margin-left: auto; margin-right: auto;">     
+        
       <div id="content">
 
       <div id="shoppingCartContainer" class="col-xs-12">
@@ -95,7 +95,7 @@
           
           
             
-     </div>
+     
          
           <div class="col-md-1"></div>
           
@@ -130,20 +130,21 @@
 
             $('#productslist').on('click', 'input[data-sku-add]', function() {
                 //console.log(this.getAttribute("data-sku-add"));
-
+              
                 // get the sku
                 var sku = this.getAttribute("data-sku-add");
                 var qty = $("input[data-sku-qty='" + sku + "']").val();
+                var img = $("img[data-sku-img='" + sku + "']").text();
                 var price = $("span[data-sku-price='" + sku + "']").text();
-                var desc = $("li[data-sku-desc='" + sku + "']").text();
+                var desc = $("span[data-sku-desc='" + sku + "']").text();
                 var subtotal = parseFloat(Math.round((qty * price) * 100) / 100).toFixed(2);
-                console.log(desc, "quantity", qty, "price", price);
+                console.log(img, desc, "quantity", qty, "price", price);
 
                 var shoppingCartList = $("#shoppingCart");
 
 
-                var item = "<li data-item-sku='" + sku + "' data-item-qty='" + qty + "'>"
-                    + desc + " " + qty + " x $" + price + " = " + subtotal
+                var item = "<li class='dot' data-item-sku='" + sku + "' data-item-qty='" + qty + "'>"
+                     + img + desc + " " + qty + " x $" + price + " <span class='placeholder'></span>Total: " + subtotal
                     + " <input type='button' data-remove-button='remove' value='X'/></li>";
                 shoppingCartList.append(item);
 

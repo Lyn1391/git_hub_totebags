@@ -1,23 +1,26 @@
-<!Doctype html>
+<!--?php
+
+if (session_status () == PHP_SESSION_NONE) {
+    SESSION_SESSION();
+}
+
+if(!isset($_SESSION['loggedin']) | $_SESSION['loggedin'] != 'true') {
+    header("Location: index.php");
+};
+
+
+?>*/-->
+<!DOCTYPE html>
 <html>
-
-    <body>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-   
-  
+    
+     <link href="css/grid.css" rel="stylesheet"/>
+     <link href="css/bootstrap.css" rel="stylesheet"/>
+ 
     <style>
-      @import url(https://fonts.googleapis.com/css?family=Hind);
+    
 
       body {
         font-family: 'Hind', sans-serif !important;
-      }
-      
-       
-        
-      table {
-       
       }
         
       td {
@@ -52,12 +55,31 @@
       }
         
     </style>
- 
-     <link href="css/grid.css" rel="stylesheet"/>
-     <link href="css/bootstrap.css" rel="stylesheet"/>
- 
+    
+    
+    
+<body onload="popup('popUpDiv')">
+
         
  <!-------------------this is the sign up/ login page, appear before user login the admin page----------------------------->  
+        
+    
+        
+
+<div id="popUpDiv" >
+
+    
+    </br></br></br>
+    <p style="text-align:left; margin-left:10%;">ZI,</p>
+    <p class="center3">Welcome back to the Admin page!</p>
+    <p class="center3">This page helps you to manage your stock.</p> 
+    </br></br>
+    
+    <a id="dele" style="color:yellow;">Click to Close</a>
+    
+    
+</div>
+              
         
         
         
@@ -80,22 +102,22 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php" ><img src="shop.png" width="65px" height="50px" /></a>
+                <a class="navbar-brand" href="#" ><img src="http://cdn02.thesak.com/resources/elliottlucca/images/layout/logo.png" width="165px" height="46px" /></a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">About</a>
+                        <!--a href="#">About</a>
                     </li>
                     <li>
-                        <a href="#">Services</a>
+                        <a href="#">Services</a-->
                     </li>
                     
                 </ul>
                 <ul class="nav navbar-nav navbar-right" >
                     <li>
-                        <a href="#" id="logoutbutton">Log out</a>
+                        <a id="logoutbutton" class="btn-brown">Log out</a>
                     </li>
                 </ul>
             </div>
@@ -108,7 +130,7 @@
     </div>
 
 
-       
+         <div class="holder"></div>
         
 
 
@@ -118,7 +140,9 @@
                     <input id="addFirstName" type="text" placeholder="Product Name" required="required"/></br>
                     <input id="addLastName" type="text" placeholder="Price" required="required"/></br>
                     <input id="addUserName" type="text" placeholder="Description" required="required"/></br>
+                    <input id="addquantity" type="text" placeholder="quantity" required="required"/></br>
                     <input id="image" type="text" placeholder="Image Path" required="required"></br>
+    
                     <input id="submitNewUser" type="submit" value="Add"/>
           </form>  
         </div>
@@ -127,12 +151,16 @@
             <table id="users">
                 <thead>
                   <tr>
+                   
                     <th class="first_name_header"><span>PRODUCT</span></th>
                     <th class="last_name_header"><span>PRICE</span></th>
                     <th class="login_header"><span>DESCRIPTION</span></th>
                     <th class="image"><span>IMAGE</span></th>
+                    <th class="quantity_header"><span>QUANTITY</span></th>  
                     <th class="delete_header"><span>DELETE</span></th>
                     <th class="delete_header"><span>UPDATE</span></th>
+                   
+                      
                   </tr>
                 </thead>
 
@@ -142,7 +170,7 @@
                     <td class="first_name"><span>aaa</span></td>
                     <td class="last_name"><span>bbb</span></td>
                     <td class="user_name"><span>uniqueloginname</span></td>
-                    <td class="i_image"><span><image src=''/></span></td>
+                    <td class="i_image"><span><img src=''/></span></td>
                     <td><input id="uniqueloginname" class="delete" type="button" value="Delete"/></td>
                   </tr>
                   <!-- THIS SECTION WILL BE REPLACED BY SERVER GENERATED ROWS -->
@@ -170,7 +198,13 @@
     <script>
 
         $(document).ready(function() {
-
+            var pop = document.getElementById("popUpDiv");
+            var dele = document.getElementById("dele");
+            dele.onclick = function(){
+                pop.style.display = "none";
+                pop.style.visibility = "hidden";
+            }
+            
              $("#logoutbutton").bind("click", doLogout);
              
             function doLogout() {
@@ -226,14 +260,15 @@
                 var lastName = $("#addLastName").val();
                 var userName = $("#addUserName").val();
                 var image = $("#image").val();
-                console.log(firstName, lastName, userName, image);
+                var quantity = $("#addquantity").val();
+                console.log(firstName, lastName, userName, image, quantity);
 
                 $.ajax({
                     url: "users.php",
                     type: "POST",
                     dataType: "JSON",
                     data: {action: "add", newFirstName: firstName,
-                        newLastName: lastName, newUserName: userName,newImage:image},
+                        newLastName: lastName, newUserName: userName,newImage:image, newQuantity:quantity},
                     success: function(returnedData) {
                         loadUsers();
                         console.log(returnedData);
@@ -272,13 +307,16 @@
                 //var firstName = $(this).val(
                 loginValue = loginValue.replace("u-", "");
                 var editedFirstName = $(this).parent().parent().find(".first_name span").text();
+                var editedLastName = $(this).parent().parent().find(".last_name span").text();
+                var editedUserName = $(this).parent().parent().find(".user_name span").text();
+                var editedQuantity = $(this).parent().parent().find(".quantity span").text();
                 //console.log(loginValue, editedFirstName);
 
                 $.ajax({
                     url: "./users.php",
                     type: "POST",
                     dataType: 'json',
-                    data: {action: "update", username: loginValue, newFirstName: editedFirstName},
+                    data: {action: "update", username: loginValue, newFirstName: editedFirstName, newLastName: editedLastName, newUserName: editedUserName, newQuantity: editedQuantity},
                     success: function(returnedData) {
                         loadUsers();
 
@@ -301,6 +339,30 @@
                 var val = $(this).html();
 
                 if($td.attr('class') === 'first_name') {
+                    //var val = $(this).html();
+                    $td.html('<input type="text" value="' + val + '"/>');
+                    var $input = $td.find('input');
+                    $input.focus();
+                    $input.select();
+                }
+                
+                if($td.attr('class') === 'last_name') {
+                    //var val = $(this).html();
+                    $td.html('<input type="text" value="' + val + '"/>');
+                    var $input = $td.find('input');
+                    $input.focus();
+                    $input.select();
+                }
+                
+                 if($td.attr('class') === 'user_name') {
+                    //var val = $(this).html();
+                    $td.html('<input type="text" value="' + val + '"/>');
+                    var $input = $td.find('input');
+                    $input.focus();
+                    $input.select();
+                }
+                
+                if($td.attr('class') === 'quantity') {
                     //var val = $(this).html();
                     $td.html('<input type="text" value="' + val + '"/>');
                     var $input = $td.find('input');
@@ -330,5 +392,6 @@
         });
 
     </script>
-
+  <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
 </html>

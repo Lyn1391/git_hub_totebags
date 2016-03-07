@@ -5,18 +5,7 @@
 
 
   <body>
-
-
- 
-
     <div>
-
-     
-       
-      
-
-      
-
       <div id="loginFormContainer" tal:condition="php: !Session::get('isLoggedIn')">
           
             <div class="body"></div>
@@ -25,7 +14,7 @@
                         <div></div>
                     </div>  
           
-          <a href="index.php"><img class="glyphicon" src="https://cdn2.iconfinder.com/data/icons/Siena/128/undo%20yellow.png"></img></a>
+          <a href="index.php"><img class="glyphicon" src="http://nexcle.com.hk/nex/sites/all/themes/bootstrap/bootstrap_subtheme/images/icon_arrow_left.png"></img></a>
           
         <form id="loginForm" class="login">
           
@@ -43,28 +32,12 @@
 
       </div>
       
-      
-      
-      
-      
-      
-      
-      
-      
-      
-
-
+ 
 <!-- tal:condition="exists: isLoggedIn" -->
 
       <div id="logoutFormContainer" tal:condition="php: Session::get('isLoggedIn')">
 
-       
-          
-          
-          
-          
-          
-          
+        
             <input id="logoutbutton" type="button" value="Logout"/>
             <!--input type="hidden" value="logout" name="logoutButton"/-->
       </div>
@@ -140,6 +113,7 @@
                             // remove login form
                             $("#loginForm").remove();
                              window.location.href = "dashboard.html";
+                             
                             // create logout form
                             /*$("#loginFormContainer").after('<div id="logoutFormContainer"><form id="logoutForm"><fieldset><legend>Logout Form</legend><label for="password">Password: </label><input id="logoutbutton" type="button" value="Logout"/><input type="hidden" value="logout" name="logoutButton"/></fieldset></form></div>');*/
                             $("#logoutbutton").bind("click", doLogout);
